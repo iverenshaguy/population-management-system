@@ -1,0 +1,73 @@
+type Query {
+  locations: [Location!]!
+  location(id: ID!): Location
+  me: User
+}
+
+type Mutation {
+  signup(input: SignupInput!): AuthResponse!
+  login(input: LoginInput!): AuthResponse!
+  createLocation(input: CreateLocationInput!): Location!
+  updateLocation(id: ID!, input: UpdateLocationInput!): Location!
+  deleteLocation(id: ID!): Location!
+}
+
+input SignupInput {
+  email: String! @constraint(format: "email", maxLength: 255)
+  password: String! @constraint(minLength: 8, maxLength: 255)
+  name: String! @constraint(pattern: "^[a-zA-Z ]*$", minLength: 2, maxLength: 255)
+}
+
+input LoginInput {
+  email: String! @constraint(format: "email", maxLength: 255)
+  password: String! @constraint(minLength: 8, maxLength: 255)
+}
+
+input CreateLocationInput {
+  name: String! @constraint(minLength: 3, maxLength: 255)
+  female: Int! @constraint(min: 0)
+  male: Int! @constraint(min: 0)
+  parent: ID
+}
+
+input UpdateLocationInput {
+  name: String @constraint(minLength: 2, maxLength: 255)
+  female: Int @constraint(min: 0)
+  male: Int @constraint(min: 0)
+  parent: ID
+}
+
+directive @constraint(
+  min: Int,
+  minLength: Int,
+  maxLength: Int,
+  format: String,
+  pattern: String
+ ) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+type User {
+  id: ID!
+  email: String
+  name: String!
+  locations: [Location!]!
+}
+
+type AuthResponse {
+  token: String!
+  user: User!
+}
+
+type Population {
+  female: Int!
+  male: Int!
+  total: Int!
+}
+
+type Location {
+  id: ID!
+  name: String
+  population: Population
+  author: User!
+  parent: Location
+  children: [Location!]!
+}
