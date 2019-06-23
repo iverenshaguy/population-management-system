@@ -80,7 +80,7 @@ You can run `yarn dev` in development to use [Nodemon](https://nodemon.io/)
 
 * After installing as shown above
 * Navigate to [localhost:[PORT]/playground](http://localhost:[PORT]/playground) in your browser to access the application
-* Use the [API Documentation](https://phone-number-generator-sivy.herokuapp.com/graphql/docs) to access the endpoints available
+* Use the [API Documentation](https://graphql-docs.com/docs/?graphqlUrl=https://population-manager-sivy.herokuapp.com/graphql)
 
 #### Testing with Coverage Data
 
