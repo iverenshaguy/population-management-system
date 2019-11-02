@@ -25,7 +25,7 @@
     "graphql-constraint-directive": "^1.4.0",
     "graphql-yoga": "1.17.4",
     "jsonwebtoken": "8.5.1",
-    "mongoose": "^5.6.0",
+    "mongoose": "^5.7.5",
     "mongoose-autopopulate": "^0.9.1",
     "mongoose-seed": "^0.6.0"
   },
